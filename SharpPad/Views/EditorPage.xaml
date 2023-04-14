@@ -1,0 +1,82 @@
+<Page
+    x:Class="SharpPad.Views.EditorPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <RelativePanel Padding="8">
+        <RelativePanel.Resources>
+            <Style TargetType="Button">
+                <Setter Property="Margin" Value="0,0,8,8" />
+                <Setter Property="CornerRadius" Value="6" />
+                <Setter Property="BorderThickness" Value="0" />
+                <Setter Property="Background" Value="Transparent" />
+            </Style>
+        </RelativePanel.Resources>
+
+        <Button
+            x:Name="SaveFileButton"
+            Click="SaveFileButton_Click"
+            ToolTipService.ToolTip="Ctrl + S"
+            AutomationProperties.Name="Save file">
+
+            <Button.KeyboardAccelerators>
+                <KeyboardAccelerator Modifiers="Control" Key="S" />
+            </Button.KeyboardAccelerators>
+
+            <Button.Content>
+                <StackPanel Orientation="Horizontal">
+                    <SymbolIcon Symbol="SaveLocal" />
+                    <TextBlock
+                        Text="Save file"
+                        Margin="8,0,0,0" />
+                </StackPanel>
+            </Button.Content>
+        </Button>
+
+        <Button
+            x:Name="OpenFileButton"
+            Click="OpenFileButton_Click"
+            ToolTipService.ToolTip="Ctrl + O"
+            AutomationProperties.Name="Open file"
+            RelativePanel.RightOf="SaveFileButton">
+
+            <Button.KeyboardAccelerators>
+                <KeyboardAccelerator Modifiers="Control" Key="O" />
+            </Button.KeyboardAccelerators>
+
+            <Button.Content>
+                <StackPanel Orientation="Horizontal">
+                    <SymbolIcon Symbol="OpenFile" />
+                    <TextBlock
+                        Text="Open file"
+                        Margin="8,0,0,0" />
+                </StackPanel>
+            </Button.Content>
+        </Button>
+
+        <StackPanel
+            Orientation="Horizontal"
+            RelativePanel.AlignRightWithPanel="True">
+            
+            <SymbolIcon Symbol="Find" />
+            <TextBox
+                Width="256"
+                Margin="8,0,0,0"
+                x:Name="SearchBox"
+                PlaceholderText="Search"
+                TextChanged="SearchBox_TextChanged" />
+        </StackPanel>
+
+        <RichEditBox
+            x:Name="Editor"
+            MaxLength="4096"
+            AutomationProperties.Name="Editor"
+            RelativePanel.Below="SaveFileButton"
+            RelativePanel.AlignLeftWithPanel="True"
+            RelativePanel.AlignRightWithPanel="True"
+            RelativePanel.AlignBottomWithPanel="True" />
+    </RelativePanel>
+</Page>

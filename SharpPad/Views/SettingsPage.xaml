@@ -1,0 +1,248 @@
+<Page
+    x:Class="SharpPad.Views.SettingsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    NavigationCacheMode="Required"
+    mc:Ignorable="d">
+
+    <Grid Margin="36,24,0,24">
+        <TextBlock
+            FontSize="28"
+            Text="Settings"
+            FontWeight="SemiBold"
+            Style="{StaticResource TitleTextBlockStyle}" />
+
+        <ScrollViewer Margin="0,64,0,0">
+            <StackPanel Margin="0,0,36,0">
+                <TextBlock
+                    FontWeight="SemiBold"
+                    Text="Appearance &amp; behavior" />
+
+                <Grid
+                    Padding="8"
+                    CornerRadius="6"
+                    Margin="0,12,0,0"
+                    BorderThickness="1"
+                    BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+                    Background="{ThemeResource CardBackgroundFillColorDefaultBrush}">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="48" />
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <FontIcon
+                        Width="48"
+                        Height="48"
+                        Glyph="&#xE790;"
+                        HorizontalAlignment="Left" />
+
+                    <StackPanel
+                        Grid.Column="1"
+                        Padding="6,0,0,0"
+                        VerticalAlignment="Center">
+
+                        <TextBlock Text="App theme" />
+                        <TextBlock
+                            FontSize="12"
+                            Foreground="DarkGray"
+                            Text="Select which app theme to display" />
+                    </StackPanel>
+
+                    <ComboBox
+                        Width="Auto"
+                        Grid.Column="2"
+                        Margin="0,0,8,0"
+                        x:Name="AppTheme"
+                        VerticalAlignment="Center"
+                        SelectionChanged="AppTheme_SelectionChanged">
+
+                        <ComboBoxItem Content="Light" Tag="Light" />
+                        <ComboBoxItem Content="Dark" Tag="Dark" />
+                        <ComboBoxItem Content="Default" Tag="Default" />
+                    </ComboBox>
+                </Grid>
+
+                <Grid
+                    Padding="8"
+                    CornerRadius="6"
+                    Margin="0,12,0,0"
+                    BorderThickness="1"
+                    BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+                    Background="{ThemeResource CardBackgroundFillColorDefaultBrush}">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="48" />
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <FontIcon
+                        Width="48"
+                        Height="48"
+                        Glyph="&#xEC4F;"
+                        HorizontalAlignment="Left" />
+
+                    <StackPanel
+                        Grid.Column="1"
+                        Padding="6,0,0,0"
+                        VerticalAlignment="Center">
+
+                        <TextBlock Text="Sound" />
+
+                        <TextBlock
+                            FontSize="12"
+                            Foreground="DarkGray"
+                            Text="Controls provide audible feedback" />
+                    </StackPanel>
+
+                    <ToggleSwitch
+                        x:Name="Sound"
+                        Grid.Column="2"
+                        Margin="0,0,8,0"
+                        Toggled="Sound_Toggled"
+                        FlowDirection="RightToLeft" />
+                </Grid>
+
+                <Grid
+                    Padding="8"
+                    CornerRadius="6"
+                    Margin="0,12,0,0"
+                    BorderThickness="1"
+                    BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+                    Background="{ThemeResource CardBackgroundFillColorDefaultBrush}">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="48" />
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <FontIcon
+                        Width="48"
+                        Height="48"
+                        Glyph="&#xE8D2;"
+                        HorizontalAlignment="Left" />
+
+                    <StackPanel
+                        Grid.Column="1"
+                        Padding="6,0,0,0"
+                        VerticalAlignment="Center">
+
+                        <TextBlock Text="Font family" />
+                        <TextBlock
+                            FontSize="12"
+                            Foreground="DarkGray"
+                            Text="Select the editor font family" />
+                    </StackPanel>
+
+                    <ComboBox
+                        Width="Auto"
+                        x:Name="Family"
+                        Grid.Column="2"
+                        Margin="0,0,8,0"
+                        DisplayMemberPath="Item1"
+                        SelectedValuePath="Item2"
+                        VerticalAlignment="Center"
+                        ItemsSource="{x:Bind Fonts}"
+                        SelectionChanged="FontFamily_SelectionChanged">
+                    </ComboBox>
+                </Grid>
+                
+                <Grid
+                    Padding="8"
+                    CornerRadius="6"
+                    Margin="0,12,0,0"
+                    BorderThickness="1"
+                    BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+                    Background="{ThemeResource CardBackgroundFillColorDefaultBrush}">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="48" />
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <FontIcon
+                        Width="48"
+                        Height="48"
+                        Glyph="&#xE8E9;"
+                        HorizontalAlignment="Left" />
+
+                    <StackPanel
+                        Grid.Column="1"
+                        Padding="6,0,0,0"
+                        VerticalAlignment="Center">
+
+                        <TextBlock Text="Font size" />
+                        <TextBlock
+                            FontSize="12"
+                            Foreground="DarkGray"
+                            Text="Select the editor font size" />
+                    </StackPanel>
+
+                    <ComboBox
+                        Width="Auto"
+                        x:Name="Size"
+                        Grid.Column="2"
+                        Margin="0,0,8,0"
+                        VerticalAlignment="Center"
+                        ItemsSource="{x:Bind FontSizes}"
+                        SelectionChanged="FontSize_SelectionChanged">
+                    </ComboBox>
+                </Grid>
+
+                <TextBlock
+                    Text="About"
+                    Margin="0,32,0,0"
+                    FontWeight="SemiBold" />
+
+                <Grid
+                    Padding="8"
+                    CornerRadius="6"
+                    Margin="0,12,0,0"
+                    BorderThickness="1"
+                    BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+                    Background="{ThemeResource CardBackgroundFillColorDefaultBrush}">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="48" />
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <FontIcon
+                        Width="48"
+                        Height="48"
+                        Glyph="&#xECAA;"
+                        HorizontalAlignment="Left" />
+
+                    <StackPanel
+                        Grid.Column="1"
+                        Padding="6,0,0,0"
+                        VerticalAlignment="Center">
+
+                        <TextBlock Text="SharpPad" />
+
+                        <TextBlock
+                            FontSize="12"
+                            Foreground="DarkGray"
+                            Text="A powerful yet simple tool that enables users to stay organized and productive" />
+                    </StackPanel>
+
+                    <TextBlock
+                        Grid.Column="2"
+                        Margin="0,0,8,0"
+                        VerticalAlignment="Center"
+                        Foreground="{ThemeResource TextFillColorSecondaryBrush}">
+                        
+                        <Run Text="{x:Bind Version}" />
+                    </TextBlock>
+                </Grid>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Page>

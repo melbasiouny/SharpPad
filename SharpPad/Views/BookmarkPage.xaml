@@ -1,0 +1,24 @@
+<Page
+    x:Class="SharpPad.Views.BookmarkPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <TabView
+        x:Name="BookmarkPages"
+        VerticalAlignment="Stretch"
+        Loaded="BookmarkPages_Loaded"
+        AddTabButtonClick="BookmarkPages_AddTabButtonClick"
+        TabCloseRequested="BookmarkPages_TabCloseRequested">
+
+        <TabView.TabStripHeader>
+            <TextBlock
+                Margin="16,8"
+                VerticalAlignment="Center"
+                x:Name="BookmarkPagesHeader"
+                Style="{ThemeResource BaseTextBlockStyle}" />
+        </TabView.TabStripHeader>
+    </TabView>
+</Page>
